@@ -1,0 +1,47 @@
+.feature {
+    width: 27%;
+    height: 100%;
+    border: 2px solid #f0f0fd;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 0 15px -10px rgba(0, 0, 0, 0.75);
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+.feature-title {
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 30px;
+    color: rgb(30, 31, 31, 0.8);
+}
+
+.feature-price {
+    width: 100%;
+    margin-left: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.feature-price .price {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.feature-price .cost {
+    font-size: 16px;
+    color: rgb(30, 31, 31, 0.8);
+    margin: 0 0 0 15px;
+}
+
+.greenyellow {
+    color: greenyellow;
+}
+
+.red {
+    color: red;
+}

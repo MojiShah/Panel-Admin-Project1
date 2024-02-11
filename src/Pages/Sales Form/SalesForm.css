@@ -1,0 +1,44 @@
+.SalesForm {
+    width: 90vw;
+    height: calc(100vh - 100px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('/public/images/sales.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.form {
+    width: 30%;
+    height: 60%;
+    border: 7px solid crimson;
+    border-radius: 20px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.form select {
+    width: 80%;
+    height: 10%;
+    padding: 5px 15px;
+    border: 3px solid black;
+    font-size: 20px;
+}
+
+.inputStyle {
+    padding: 10px 30px;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.form button {
+    padding: 15px 50px;
+    color: #fff;
+    font-size: 25px;
+    font-weight: bold;
+    border: 3px solid white;
+}
