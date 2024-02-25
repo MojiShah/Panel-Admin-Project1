@@ -1,0 +1,84 @@
+.forms {
+    flex: 5;
+    width: 100%;
+    height: inherit;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-image: url('/public/images/user.JPG');
+    background-repeat: no-repeat;
+    /* background-position: center; */
+    background-size: cover;
+    backdrop-filter: unset;
+}
+
+
+.older-customsers,
+.new-customers {
+    width: 40%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 7px solid crimson;
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.older-customers-title,
+.new-customers-title {
+    color: #f900f1;
+    text-shadow: 2px 4px 3px rgba(255, 255, 255, 0.9);
+    font-size: 45px;
+    font-weight: bold;
+}
+
+.older-username,
+.new-username,
+.older-email,
+.new-email {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.older-username span,
+.new-username span,
+.older-email span,
+.new-email span {
+    font-size: 25px;
+    font-weight: 400;
+    margin: 20px;
+}
+
+.older-username input,
+.new-username input,
+.older-email input,
+.new-email input {
+    width: 50%;
+    height: 40px;
+    border: 3px solid black;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 20px;
+}
+
+.older-customsers button,
+.new-customers button
+ {
+    padding: 15px 50px;
+    color: #fff;
+    font-size: 25px;
+    font-weight: bold;
+    border: 3px solid white;
+}
+
+.warning {
+    color: red;
+    background-color: #fff;
+    padding: 5px;
+    font-size: 15px;
+}

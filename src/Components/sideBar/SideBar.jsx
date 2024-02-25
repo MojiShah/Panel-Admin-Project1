@@ -22,7 +22,7 @@ export default function SideBar() {
                     <h3 className="sidebar-title">Dashboard</h3>
                     <ul className="sibebarList">
                         <Link to='/' className='link'>
-                            <li className="sidebarListItem active">
+                            <li className="sidebarListItem">
                                 <LineStyleIcon className='sidebar-icon' sx={{ fontSize: 15 }} />Home
                             </li>
                         </Link>
@@ -39,7 +39,7 @@ export default function SideBar() {
                     <h3 className="sidebar-title">Quick Menu</h3>
                     <ul className="sibebarList">
                         <Link to='/users' className='link'>
-                            <li className="sidebarListItem active">
+                            <li className="sidebarListItem">
                                 <PermIdentityIcon className='sidebar-icon' sx={{ fontSize: 20 }} />Users
                             </li>
                         </Link>
@@ -51,9 +51,11 @@ export default function SideBar() {
                         <li className="sidebarListItem">
                             <StorefrontIcon className='sidebar-icon' sx={{ fontSize: 20 }} />Products
                         </li>
-                        <li className="sidebarListItem">
-                            <AttachMoneyIcon className='sidebar-icon' sx={{ fontSize: 20 }} />Transaction
-                        </li>
+                        <Link to='/transaction' className='link'>
+                            <li className="sidebarListItem">
+                                <AttachMoneyIcon className='sidebar-icon' sx={{ fontSize: 20 }} />Transaction
+                            </li>
+                        </Link>
                         <li className="sidebarListItem">
                             <BarChartIcon className='sidebar-icon' sx={{ fontSize: 20 }} />Reports
                         </li>
@@ -63,7 +65,7 @@ export default function SideBar() {
                 <div className="sidebar-menu">
                     <h3 className="sidebar-title">Notifications</h3>
                     <ul className="sibebarList">
-                        <li className="sidebarListItem active">
+                        <li className="sidebarListItem">
                             <MailOutline className='sidebar-icon' sx={{ fontSize: 20 }} />Mail
                         </li>
                         <li className="sidebarListItem">
@@ -78,9 +80,11 @@ export default function SideBar() {
                 <div className="sidebar-menu">
                     <h3 className="sidebar-title">Staff</h3>
                     <ul className="sibebarList">
-                        <li className="sidebarListItem active">
-                            <WorkOutlineIcon className='sidebar-icon' sx={{ fontSize: 20 }} />Manage
-                        </li>
+                        <Link to='/salesform' className='link'>
+                            <li className="sidebarListItem">
+                                <WorkOutlineIcon className='sidebar-icon' sx={{ fontSize: 20 }} />Manage
+                            </li>
+                        </Link>
                         <li className="sidebarListItem">
                             <TimelineIcon className='sidebar-icon' sx={{ fontSize: 20 }} />Analytics
                         </li>

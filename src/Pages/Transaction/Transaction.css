@@ -1,0 +1,53 @@
+.transaction {
+    flex: 5;
+    background-image: url('/public/images/transanction.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.transaction-form {
+    width: 50%;
+    height: 50%;
+    border: 10px solid crimson;
+    margin-top: 200px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.customerName ,
+.date ,
+.amount ,
+.status {
+    display: flex;
+}
+
+.customerName h3,
+.date h3 ,
+.amount h3 ,
+.status h3 {
+    margin-right: 20px;
+}
+
+.customerName input , 
+.date input ,
+.amount input ,
+.status select {
+    padding: 5px 10px;
+    border: 3px solid black;
+    border-radius: 5px;
+}
+
+.submitBtn{
+    border: 2px solid #fff;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 25px;
+    font-weight: bold;
+}
+

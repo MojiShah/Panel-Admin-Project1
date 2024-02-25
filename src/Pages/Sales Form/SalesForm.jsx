@@ -5,7 +5,7 @@ import { Monthes } from '../../Data';
 export default function SalesForm() {
 
     const [month, setMonth] = useState('');
-    const [sales, setSales] = useState(0);
+    const [sales, setSales] = useState('');
 
     useEffect(() => {
         console.log(month);
@@ -14,17 +14,17 @@ export default function SalesForm() {
     const SubmitHandler = (e) => {
         e.preventDefault();
 
+
         let selesInMonthes = {
             month,
             sales
         }
 
-        fetch('https://panel-admin-1-default-rtdb.firebaseio.com/monthes.json', {
-            method: 'POST',
-            body: JSON.stringify(selesInMonthes)
-        }).
-        then(res => console.log(res));
+        const Response = useFetchPostMethod('https://panel-admin-1-default-rtdb.firebaseio.com/monthes.json', selesInMonthes);
+
+        console.log(Response);
         
+
     }
 
 
@@ -40,13 +40,22 @@ export default function SalesForm() {
                     ))}
                 </select>
 
-                <input type="text"
+                <input type="number"
                     placeholder='Enter the prefit per month'
                     className='inputStyle'
                     value={sales}
                     onChange={e => setSales(e.target.value)} />
+                {!sales.length &&
+                    (<span className='warning'>please enter the sales value</span>)
+                }
 
-                <button>Submit</button>
+                {
+                    sales.length ?
+                        (<button >Submit</button>) 
+                        :
+                        (<button disabled>Submit</button>)
+                }
+
             </form>
         </div>
     )

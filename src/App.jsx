@@ -12,7 +12,7 @@ function App() {
   return (
     <>
       <Topbar />
-      <div className="container">
+      <div className="myContainer">
         <SideBar />
         {router}
       </div>

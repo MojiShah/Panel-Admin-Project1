@@ -23,7 +23,7 @@ export default function Topbar() {
                     <SettingsIcon sx={{ fontSize: 30 }} />
                 </div>
 
-                <img src="images/Me.jpeg" alt="UserMoji" />
+                <img src="images/Moji1.jpeg" alt="UserMoji" />
             </div>
         </div>
     )

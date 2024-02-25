@@ -1,0 +1,77 @@
+.WidgetLgTransaction {
+    flex: 1.8;
+    padding: 20px;
+    box-shadow: 0 0 15px 10px rgba(0, 0, 0, .9);
+    border-radius: 50px;
+    margin-left: 25px;
+}
+
+.WidgetTitle {
+    text-align: center;
+    font-weight: bold;
+}
+
+.WidgetLgTable {
+    width: 100%;
+    border-spacing: 20px;
+}
+
+.WidgetLgTh {
+    text-align: left;
+    border-bottom: 5px solid #433e3e;
+}
+
+.widgetLgTr {
+    border-bottom: 2px solid #433e3e;
+}
+
+.WidgetLgUser {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.WidgetLgUserImg {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: contain;
+    margin: 10px 8px;
+}
+
+.WidgetLgName {
+    font-size: 17px;
+    font-family: sans-serif;
+    font-weight: 700;
+}
+
+.WidgetLgDate,
+.WidgetLgAmount {
+    font-weight: 100;
+    font-family: sans-serif;
+}
+
+.WidgetLgButton {
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.Approved {
+    color: #3bb077;
+    background-color: #e5faf2;
+}
+
+.Declined {
+    color: #d95087;
+    background-color: #fff0f1;
+}
+
+.Pending {
+    color: #eb6f0a;
+    background-color: #e8d759;
+}
