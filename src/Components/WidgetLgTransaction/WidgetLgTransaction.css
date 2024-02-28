@@ -32,8 +32,8 @@
 }
 
 .WidgetLgUserImg {
-    width: 90px;
-    height: 90px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     object-fit: contain;
     margin: 10px 8px;
@@ -55,7 +55,7 @@
     width: 120px;
     display: flex;
     justify-content: center;
-    padding: 15px 30px;
+    padding: 10px 30px;
     border: none;
     border-radius: 10px;
     font-weight: bold;

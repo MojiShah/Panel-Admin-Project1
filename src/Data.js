@@ -24,6 +24,15 @@ let userImages = [
     { id: 5, img: 'images/Reza.jpeg' },
 ];
 
+let customerImages = [
+    { id: 1, img: 'images/Moji1.jpeg' },
+    { id: 2, img: 'images/Moji2.jpg' },
+    { id: 3, img: 'images/Moji3.jpg' },
+    { id: 6, img: 'images/Elnaz.jpeg' },
+    { id: 4, img: 'images/Moji4.jpg' },
+    { id: 5, img: 'images/Reza.jpeg' },
+];
+
 let myVisibility = [
     {id:1,value:true},
     {id:2,value:true},
@@ -35,4 +44,4 @@ let myVisibility = [
 
 
 
-export { Monthes, userImages, myVisibility };
+export { Monthes, userImages, customerImages,myVisibility };

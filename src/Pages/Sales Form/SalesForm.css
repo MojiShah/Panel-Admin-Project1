@@ -1,18 +1,23 @@
-.SalesForm {
-    width: 90vw;
-    height: calc(100vh - 100px);
-    flex: 5;
+.SalesFormConents {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
     background-image: url('/public/images/sales.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
 
+.SalesForm {
+    width: 90vw;
+    height: calc(80vh - 100px);
+    flex: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .form {
     width: 30%;
-    height: 60%;
+    height: 55%;
     border: 7px solid crimson;
     border-radius: 20px;
     background-color: transparent;
@@ -38,15 +43,33 @@
 
 .form button {
     padding: 15px 50px;
-    color: #fff;
+    color: #000;
     font-size: 25px;
     font-weight: bold;
-    border: 3px solid white;
+    border: 3px solid rgb(75, 14, 14);
+    border-radius: 5px;
 }
 
-.warning{
-    color: red;
-    background-color: #fff;
+.salesForm-warning {
+    color: rgb(255, 77, 0);
+    background-color: transparent;
+    font-weight: bold;
+    text-shadow: 3px 3px black;
     padding: 5px;
-    font-size: 15px;
+    font-size: 28px;
+}
+
+.slogan {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    /* background-image: linear-gradient(to right, rgba(0, 0, 100, 0.7), rgb(0, 10, 100)); */
+}
+
+.slogan h1 {
+    font-family: serif;
+    font-size: 45px;
 }

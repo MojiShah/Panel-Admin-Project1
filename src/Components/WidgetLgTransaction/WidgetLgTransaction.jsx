@@ -1,8 +1,11 @@
-import React from 'react';
+import React,{useState} from 'react';
 import './WidgetLgTransaction.css'
 import UseGetUsersData from '../../hooks/UseGetUsersData';
+import { customerImages } from '../../Data';
+
 
 export default function WidgetLgTransaction() {
+    const [newUserImages, setNewUserImages] = useState(customerImages);
 
     const selectedTransactions = UseGetUsersData('https://panel-admin-1-default-rtdb.firebaseio.com/transaction.json');
 
@@ -28,7 +31,7 @@ export default function WidgetLgTransaction() {
                         (
                             <tr className="widgetLgTr" key={selectedTransaction[0]}>
                                 <td className="WidgetLgUser">
-                                    <img className='WidgetLgUserImg' src="images/Moji3.jpg" alt="Moji" />
+                                    <img className='WidgetLgUserImg' src={newUserImages[index].img} alt="Moji" />
                                     <span className="WidgetLgName">{selectedTransaction[1].customerName}</span>
                                 </td>
 
