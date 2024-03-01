@@ -56,9 +56,11 @@ export default function SideBar() {
                                 <AttachMoneyIcon className='sidebar-icon' sx={{ fontSize: 20 }} />Transaction
                             </li>
                         </Link>
-                        <li className="sidebarListItem">
-                            <BarChartIcon className='sidebar-icon' sx={{ fontSize: 20 }} />Reports
-                        </li>
+                        <Link to='/reports' className='link'>
+                            <li className="sidebarListItem">
+                                <BarChartIcon className='sidebar-icon' sx={{ fontSize: 20 }} />Reports
+                            </li>
+                        </Link>
                     </ul>
                 </div>
 

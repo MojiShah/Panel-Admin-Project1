@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import './WidgetLgTransaction.css'
 import UseGetUsersData from '../../hooks/UseGetUsersData';
 import { customerImages } from '../../Data';
+import { Link } from 'react-router-dom';
 
 
 export default function WidgetLgTransaction() {
@@ -52,6 +53,13 @@ export default function WidgetLgTransaction() {
                 }
 
             </table>
+            <div className='moreButton'>
+                <Link to='/reports'>
+                    <button>
+                        More...
+                    </button>
+                </Link>
+            </div>
         </div>
     )
 }

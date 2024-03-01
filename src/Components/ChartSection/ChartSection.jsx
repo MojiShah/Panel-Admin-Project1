@@ -25,7 +25,7 @@ export default function ChartSection(props) {
           {monthSale[1].month}-{monthSale[1].sales}
         </div>
       )} */}
-      <ResponsiveContainer width={'100%'} height={'1000'} aspect={7}>
+      <ResponsiveContainer width={'100%'} height={'1000'} aspect={5}>
         <LineChart data={props.data} >
           <XAxis dataKey='month' stroke='#000' domain={['auto', 'auto']} />
           <YAxis dataKey='sales' stroke='#555000' domain={[0, 4000]} />

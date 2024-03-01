@@ -4,6 +4,7 @@ import SalesForm from "./Pages/Sales Form/SalesForm";
 import UserList from "./Pages/Users/UserList";
 import NewUser from "./Pages/newUser/NewUser";
 import Transaction from "./Pages/Transaction/Transaction";
+import Reports from './Pages/Reports/Reports';
 
 let routes = [
     {path:'/' , element : <Home />},
@@ -12,6 +13,7 @@ let routes = [
     {path: '/products' , element : <Products />},
     {path: '/salesform' , element : <SalesForm />},
     {path: '/transaction' , element : <Transaction />},
+    {path: '/reports' , element : <Reports />},
 ];
 
 export default routes;
