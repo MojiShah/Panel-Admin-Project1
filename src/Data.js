@@ -20,7 +20,14 @@ let userImages = [
     { id: 4, img: 'images/Moji4.jpg' },
     { id: 5, img: 'images/Reza.jpeg' },
     { id: 6, img: 'images/Elnaz.jpeg' },
-    { id: 7, img: 'images/Ehsan-Manzari.png' }
+    { id: 7, img: 'images/Ehsan-Manzari.png' },
+    { id: 8, img: 'images/1.jpeg' },
+    { id: 9, img: 'images/2.jpeg' },
+    { id: 10, img: 'images/3.jpeg' },
+    { id: 11, img: 'images/4.jpeg' },
+    { id: 12, img: 'images/5.jpeg' },
+    { id: 13, img: 'images/6.jpeg' },
+    { id: 14, img: 'images/7.jpeg' },
 ];
 
 let customerImages = [

@@ -67,13 +67,14 @@
 }
 
 .older-customsers button,
-.new-customers button
- {
+.new-customers button {
     padding: 15px 50px;
     color: #fff;
+    background-color: #262323;
     font-size: 25px;
     font-weight: bold;
-    border: 3px solid white;
+    border: 3px solid rgb(223, 39, 39);
+    border-radius: 50px;
 }
 
 .warning {

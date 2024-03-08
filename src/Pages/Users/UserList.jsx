@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './UserList.css';
-import useGetNewUsers from '../../hooks/useGetNewUsers';
-import useGetOldUsers from '../../hooks/useGetOldUsers';
 import { DataGrid } from '@mui/x-data-grid';
 import { userImages } from '../../Data';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -12,6 +10,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
+import { Link } from 'react-router-dom';
 
 
 // Modal style
@@ -31,20 +30,61 @@ const style = {
 function UserList() {
 
   ///////////////////////////////////States///////////////////
-  // const [newUsersStd, setNewUsersStd] = useState([]);
-  // const [oldUsersStd, setOldUsersStd] = useState([]);
+  const [newUsers, setNewUsers] = useState([]);
+  const [oldUsers, setOldUsers] = useState([]);
   const [openOldEditModal, setOpenOldEditModal] = useState(false);
   const [openOldDeleteModal, setOpenOldDeleteModal] = useState(false);
   const [openNewEditModal, setOpenNewEditModal] = useState(false);
   const [openNewDeleteModal, setOpenNewDeleteModal] = useState(false);
+  const [userId, setUserId] = useState('');
+  const [getData,setGetData] = useState(false);
+
 
   /////////////////////////////////GetUsers///////////////////////////
-  const newUsers = useGetNewUsers('https://panel-admin-1-default-rtdb.firebaseio.com/newUsers.json');
+  // const newUsers = useGetNewUsers('https://panel-admin-1-default-rtdb.firebaseio.com/newUsers.json');
 
-  const oldUsers = useGetOldUsers('https://panel-admin-1-default-rtdb.firebaseio.com/oldUsers.json')
+  // const oldUsers = useGetOldUsers('https://panel-admin-1-default-rtdb.firebaseio.com/oldUsers.json');
 
-  console.log('newUsers', newUsers);
-  console.log('oldUsers', oldUsers);
+  useEffect(() => {
+    (
+      async () => {
+
+        await fetch('https://panel-admin-1-default-rtdb.firebaseio.com/newUsers.json')
+          .then(res => res.json())
+          .then(data => {
+            setNewUsers(Object.entries(data).map((x, i) => ({
+              number: i + 1,
+              id: x[0],
+              newUsername: x[1].newUsername,
+              newEmail: x[1].newEmail
+            })))
+          })
+      }
+
+    )();
+  }, [getData])
+
+  useEffect(() => {
+    (
+      async () => {
+
+        await fetch('https://panel-admin-1-default-rtdb.firebaseio.com/oldUsers.json')
+          .then(res => res.json())
+          .then(data => {
+            setOldUsers(Object.entries(data).map((x, i) => ({
+              number: i + 1,
+              id: x[0],
+              oldUsername: x[1].oldUsername,
+              oldEmail: x[1].oldEmail
+            })))
+          })
+      }
+
+    )();
+  }, [getData])
+
+  // console.log('newUsers', newUsers);
+  // console.log('oldUsers', oldUsers);
 
   let oldusersPlus = oldUsers.map((oldUser, index) => ({
     id: oldUser.id,
@@ -85,10 +125,14 @@ function UserList() {
   // console.log('oldUsersTemp', oldUsersTemp);
   // // console.log('newUsersStd', newUsersStd);
   // console.log('oldUsersStd', oldUsersStd);
+  ///////////////////////////Functions/////////////////////////////////////////////
 
+  function userDelete(id) {
+    // console.log(id);
+  }
 
-////////////////////////////////old Rows and Columns//////////////////////////////
-  const columns = [
+  ////////////////////////////////old Rows and Columns//////////////////////////////
+  const oldColumns = [
     { field: 'number', headerName: 'Number', width: 90 },
     {
       field: 'img',
@@ -121,31 +165,30 @@ function UserList() {
         return (
           <div className='Actions'>
 
-            <Button variant="contained"
-              color="success"
-              startIcon={<EditIcon />}
-            >
-              Edit
-            </Button>
+            <Link to={`/users/${params.row.id}`}>
+              <Button variant="contained"
+                color="success"
+                startIcon={<EditIcon />}
+              >
+                Edit
+              </Button>
+            </Link>
 
-            <DeleteIcon 
-              sx={{ color: 'red', fontSize: 40 }} 
-              style={{ cursor: 'pointer' }} 
+            <DeleteIcon
+              sx={{ color: 'red', fontSize: 40 }}
+              style={{ cursor: 'pointer' }}
               onClick={e => {
                 e.preventDefault();
                 setOpenOldDeleteModal(true)
+                console.log(params.row);
               }}
-              />
+            />
 
             <div>
               <Modal
                 aria-labelledby="transition-modal-title"
                 aria-describedby="transition-modal-description"
                 open={openOldDeleteModal}
-                onClose={e => {
-                  e.preventDefault();
-                  setOpenOldDeleteModal(false)
-                }}
                 closeAfterTransition
                 slots={{ backdrop: Backdrop }}
                 slotProps={{
@@ -166,7 +209,7 @@ function UserList() {
                     <div className="deleteAction">
                       <Button variant="contained"
                         color="error"
-                        onClick={() => setOpenOldDeleteModal(true)}
+                        onClick={() => {setUserId(params.row.id)}}
                         style={{ marginRight: '5px' }}
                       >
                         Yes
@@ -190,8 +233,8 @@ function UserList() {
     }
   ];
 
-  const rows = oldusersPlus;
-  console.log('rows', rows);
+  const oldRows = oldusersPlus;
+  console.log('oldRows', oldRows);
 
   const newColumn = [
     { field: 'number', headerName: 'Number', width: 90 },
@@ -226,19 +269,22 @@ function UserList() {
         return (
           <div className='Actions'>
 
-            <Button variant="contained"
-              color="success"
-              startIcon={<EditIcon />}
-            >
-              Edit
-            </Button>
+            <Link to={`/users/${params.row.id}`}>
+              <Button variant="contained"
+                color="success"
+                startIcon={<EditIcon />}
+              >
+                Edit
+              </Button>
+            </Link>
 
             <DeleteIcon
               sx={{ color: 'red', fontSize: 40 }}
               style={{ cursor: 'pointer' }}
               onClick={e => {
-                e.preventDefault();
+                e.preventDefault()
                 setOpenNewDeleteModal(true)
+                console.log(params.row);
               }}
             />
             <div>
@@ -246,10 +292,7 @@ function UserList() {
                 aria-labelledby="transition-modal-title"
                 aria-describedby="transition-modal-description"
                 open={openNewDeleteModal}
-                onClose={e => {
-                  e.preventDefault();
-                  setOpenNewDeleteModal(false)
-                }}
+                onClose={e => e.preventDefault()}
                 closeAfterTransition
                 slots={{ backdrop: Backdrop }}
                 slotProps={{
@@ -270,15 +313,15 @@ function UserList() {
                     <div className="deleteAction">
                       <Button variant="contained"
                         color="error"
-                        onClick={() => setOpenNewDeleteModal(true)}
-                        style={{marginRight:'5px'}}
+                        onClick={() => console.log(params.row)}
+                        style={{ marginRight: '5px' }}
                       >
                         Yes
                       </Button>
                       <Button variant="contained"
                         color="success"
                         onClick={() => setOpenNewDeleteModal(false)}
-                        style={{marginRight:'5px'}}
+                        style={{ marginRight: '5px' }}
                       >
                         No
                       </Button>
@@ -297,15 +340,13 @@ function UserList() {
   const newRows = newusersPlus;
 
 
-
-
   return (
     <div className='UserList'>
       <div className="oldUsers">
         <h1 className="oldUsersHeader">List Of Old Users</h1>
         <DataGrid
-          rows={rows}
-          columns={columns}
+          rows={oldRows}
+          columns={oldColumns}
           disableRowSelectionOnClick
           initialState={{
             pagination: {

@@ -10,7 +10,7 @@ export default function UseGetUsersData(url) {
                 await fetch(url)
                     .then(res => res.json())
                     .then(data => {
-                        setUsers(Object.entries(data).map((x,i) => ({
+                        setUsers(Object.entries(data).map((x, i) => ({
                             number: i + 1,
                             id: x[0],
                             oldUsername: x[1].oldUsername,
