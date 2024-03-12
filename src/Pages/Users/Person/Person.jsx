@@ -5,13 +5,6 @@ import useGetOldUsers from '../../../hooks/useGetOldUsers';
 import useGetNewUsers from '../../../hooks/useGetNewUsers';
 
 export default function Person() {
-  /////////////////////////////////States///////////////////////////
-  const [oldUserVal,setOldUserVal]=useState('');
-  const [oldEmail,setOldEmail]=useState('');
-  const [newUserVal,setNewUserVal]=useState('');
-  const [newEmail,setNewEmail]=useState('');
-
-
 
   /////////////////////////////////GetUsers///////////////////////////
   const newUsers = useGetNewUsers('https://panel-admin-1-default-rtdb.firebaseio.com/newUsers.json');
@@ -30,8 +23,54 @@ export default function Person() {
 
   console.log('selectedOldUser', selectedOldUser);
   console.log('selectedNewUser', selectedNewUser);
+  /////////////////////////////////States///////////////////////////
+  const [oldUserVal, setOldUserVal] = useState('');
+  const [oldEmail, setOldEmail] = useState('');
+  const [newUserVal, setNewUserVal] = useState('');
+  const [newEmail, setNewEmail] = useState('');
 
-  ////////////////////////////////states/////////////////////////////////
+  ////////////////////////////////functions/////////////////////////////////
+  const editHandler = (e) => {
+    e.preventDefault();
+    console.log('edit:', params.userID);
+
+    let editedInfos;
+    if(hasOldUser){
+
+      editedInfos ={
+        oldUsername:oldUserVal,
+        oldEmail:oldEmail
+      };
+
+      fetch(`https://panel-admin-1-default-rtdb.firebaseio.com/oldUsers/${params.userID}`,{
+        method:'PUT',
+        body: JSON.stringify(editedInfos)
+      })
+      .then(res => console.log(res));
+      <Navigate to='/users' />
+
+    }else{
+
+      editedInfos={
+        newUsername:newUserVal,
+        newEmail:newEmail
+      }
+
+      fetch(`https://panel-admin-1-default-rtdb.firebaseio.com/newUsers/${params.userID}`,{
+        method:'PUT',
+        body:JSON.stringify(editedInfos)
+      })
+        .then(res => console.log(res));
+      <Navigate to='/users' />
+
+    }//end of if
+
+  
+
+
+    
+  }
+  //////////////////////////////////////////////////////////////////////////
   // let userTemp,emailTemp;
   // if(hasOldUser){
   //   userTemp = selectedOldUser.oldUsername;
@@ -56,25 +95,27 @@ export default function Person() {
     {
       hasOldUser && (
         <div className='EditOldPersonData'>
-          <form className='oldForm'>
+          <form className='oldForm' onSubmit={e => editHandler(e)}>
             <div className="oldUsernameEdit" >
               <h3>Username: </h3>
               <input type="text"
                 className="username"
-                value={oldUserVal}
-                onChange={e=>setOldUserVal(e.target.value)}
+                value={selectedOldUser.oldUsername}
+                onChange={e => setOldUserVal(e.target.value)}
               />
             </div>
             <div className="oldEmailEdit">
               <h3>Email: </h3>
-              <input type="email" 
-              className='email'
-              value={oldEmail}
-              onChange={e=>setOldEmail(e.target.value)}
+              <input type="email"
+                className='email'
+                value={selectedOldUser.oldEmail}
+                onChange={e => setOldEmail(e.target.value)}
               />
             </div>
 
-            <button className='editOldBtn'>Update informations</button>
+            <button className='editNewBtn'>
+              Update informations
+            </button>
           </form>
 
         </div>
@@ -84,25 +125,27 @@ export default function Person() {
     {
       hasNewUser && (
         <div className='EditNewPersonData'>
-          <form className='newForm'>
+          <form className='newForm' onSubmit={e => editHandler(e)}>
             <div className="newUsernameEdit">
               <h3>Username: </h3>
-              <input type="text" 
-              className="username"
-              value={newUserVal}
-              onChange={e => setNewUserVal(e.target.value)}
+              <input type="text"
+                className="username"
+                value={selectedNewUser.newUsername}
+                onChange={e => setNewUserVal(e.target.value)}
               />
             </div>
             <div className="newEmailEdit">
               <h3>Email: </h3>
               <input type="email"
-               className='email' 
-                value={newEmail}
-                onChange={e=>setNewEmail(e.target.value)}
-               />
+                className='email'
+                value={selectedNewUser.newEmail}
+                onChange={e => setNewEmail(e.target.value)}
+              />
             </div>
 
-            <button className='editNewBtn'>Update informations</button>
+            <button className='editNewBtn'>
+              Update informations
+            </button>
           </form>
 
         </div>

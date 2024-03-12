@@ -38,6 +38,7 @@ function UserList() {
   const [openNewDeleteModal, setOpenNewDeleteModal] = useState(false);
   const [userId, setUserId] = useState('');
   const [getData,setGetData] = useState(false);
+  const [userType,setUserType]=useState('');
 
 
   /////////////////////////////////GetUsers///////////////////////////
@@ -127,8 +128,17 @@ function UserList() {
   // console.log('oldUsersStd', oldUsersStd);
   ///////////////////////////Functions/////////////////////////////////////////////
 
-  function userDelete(id) {
-    // console.log(id);
+  const userDelete = async id =>  {
+    await fetch(`https://panel-admin-1-default-rtdb.firebaseio.com/${userType}/${id}`,
+      {
+        method:'DELETE'
+      }
+    ).
+    then(res => console.log(res));
+
+    setGetData(prev => !prev);
+
+    
   }
 
   ////////////////////////////////old Rows and Columns//////////////////////////////
@@ -179,7 +189,9 @@ function UserList() {
               style={{ cursor: 'pointer' }}
               onClick={e => {
                 e.preventDefault();
-                setOpenOldDeleteModal(true)
+                setOpenOldDeleteModal(true);
+                setUserType('oldUsers');
+                setUserId(params.row.id);
                 console.log(params.row);
               }}
             />
@@ -209,7 +221,7 @@ function UserList() {
                     <div className="deleteAction">
                       <Button variant="contained"
                         color="error"
-                        onClick={() => {setUserId(params.row.id)}}
+                        onClick={() =>userDelete(userId)}
                         style={{ marginRight: '5px' }}
                       >
                         Yes
@@ -285,6 +297,8 @@ function UserList() {
                 e.preventDefault()
                 setOpenNewDeleteModal(true)
                 console.log(params.row);
+                setUserId(params.row.id);
+                setUserType('newUsers');
               }}
             />
             <div>
@@ -313,7 +327,10 @@ function UserList() {
                     <div className="deleteAction">
                       <Button variant="contained"
                         color="error"
-                        onClick={() => console.log(params.row)}
+                        onClick={() => {
+                          setOpenNewDeleteModal(false);
+                          userDelete(userId);
+                        }}
                         style={{ marginRight: '5px' }}
                       >
                         Yes
