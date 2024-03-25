@@ -48,9 +48,11 @@ export default function SideBar() {
                                 <PermIdentityIcon className='sidebar-icon' sx={{ fontSize: 20 }} />New User
                             </li>
                         </Link>
-                        <li className="sidebarListItem">
-                            <StorefrontIcon className='sidebar-icon' sx={{ fontSize: 20 }} />Products
-                        </li>
+                        <Link to='/products' className='link'>
+                            <li className="sidebarListItem">
+                                <StorefrontIcon className='sidebar-icon' sx={{ fontSize: 20 }} />Products
+                            </li>
+                        </Link>
                         <Link to='/transaction' className='link'>
                             <li className="sidebarListItem">
                                 <AttachMoneyIcon className='sidebar-icon' sx={{ fontSize: 20 }} />Transaction

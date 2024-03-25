@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Person.css';
 import { Navigate, useParams } from 'react-router-dom';
 import useGetOldUsers from '../../../hooks/useGetOldUsers';
@@ -24,11 +24,16 @@ export default function Person() {
   console.log('selectedOldUser', selectedOldUser);
   console.log('selectedNewUser', selectedNewUser);
   /////////////////////////////////States///////////////////////////
+  console.log('selectedNewUser', selectedNewUser);
+  // console.log('selectedNewUser.newUsername', selectedNewUser.newUsername);
+  // let a = selectedNewUser.newUsername;
+ 
+
   const [oldUserVal, setOldUserVal] = useState('');
   const [oldEmail, setOldEmail] = useState('');
   const [newUserVal, setNewUserVal] = useState('');
   const [newEmail, setNewEmail] = useState('');
-
+  console.log('newUserVal: ', newUserVal);
   ////////////////////////////////functions/////////////////////////////////
   const editHandler = (e) => {
     e.preventDefault();
@@ -100,7 +105,8 @@ export default function Person() {
               <h3>Username: </h3>
               <input type="text"
                 className="username"
-                value={selectedOldUser.oldUsername}
+                placeholder={selectedOldUser.oldUsername}
+                value={oldUserVal}
                 onChange={e => setOldUserVal(e.target.value)}
               />
             </div>
@@ -108,7 +114,8 @@ export default function Person() {
               <h3>Email: </h3>
               <input type="email"
                 className='email'
-                value={selectedOldUser.oldEmail}
+                placeholder={selectedOldUser.oldEmail}
+                value={oldEmail}
                 onChange={e => setOldEmail(e.target.value)}
               />
             </div>
@@ -130,15 +137,18 @@ export default function Person() {
               <h3>Username: </h3>
               <input type="text"
                 className="username"
-                value={selectedNewUser.newUsername}
+                placeholder={selectedNewUser.newUsername}
+                value={newUserVal}
                 onChange={e => setNewUserVal(e.target.value)}
               />
+              {/* selectedNewUser.newUsername */}
             </div>
             <div className="newEmailEdit">
               <h3>Email: </h3>
               <input type="email"
                 className='email'
-                value={selectedNewUser.newEmail}
+                placeholder={selectedNewUser.newEmail}
+                value={newEmail}
                 onChange={e => setNewEmail(e.target.value)}
               />
             </div>

@@ -6,16 +6,18 @@ import Person from "./Pages/Users/Person/Person";
 import NewUser from "./Pages/newUser/NewUser";
 import Transaction from "./Pages/Transaction/Transaction";
 import Reports from './Pages/Reports/Reports';
+import Product from "./Pages/Products/Product/Product";
 
 let routes = [
-    {path:'/' , element : <Home />},
-    {path:'/users' , element : <UserList />},
-    {path:'/users/:userID' , element : <Person />},
-    {path:'/newuser' , element: <NewUser />},
-    {path: '/products' , element : <Products />},
-    {path: '/salesform' , element : <SalesForm />},
-    {path: '/transaction' , element : <Transaction />},
-    {path: '/reports' , element : <Reports />},
+    { path: '/', element: <Home /> },
+    { path: '/users', element: <UserList /> },
+    { path: '/users/:userID', element: <Person /> },
+    { path: '/newuser', element: <NewUser /> },
+    { path: '/products', element: <Products /> },
+    { path: '/products/:productID', element: <Product /> },
+    { path: '/salesform', element: <SalesForm /> },
+    { path: '/transaction', element: <Transaction /> },
+    { path: '/reports', element: <Reports /> },
 ];
 
 export default routes;

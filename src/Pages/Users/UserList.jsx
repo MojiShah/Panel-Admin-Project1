@@ -32,9 +32,7 @@ function UserList() {
   ///////////////////////////////////States///////////////////
   const [newUsers, setNewUsers] = useState([]);
   const [oldUsers, setOldUsers] = useState([]);
-  const [openOldEditModal, setOpenOldEditModal] = useState(false);
   const [openOldDeleteModal, setOpenOldDeleteModal] = useState(false);
-  const [openNewEditModal, setOpenNewEditModal] = useState(false);
   const [openNewDeleteModal, setOpenNewDeleteModal] = useState(false);
   const [userId, setUserId] = useState('');
   const [getData,setGetData] = useState(false);
@@ -247,6 +245,9 @@ function UserList() {
 
   const oldRows = oldusersPlus;
   console.log('oldRows', oldRows);
+
+  ////////////////////////////////new Rows and Columns//////////////////////////////
+
 
   const newColumn = [
     { field: 'number', headerName: 'Number', width: 90 },
